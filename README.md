@@ -1,6 +1,9 @@
 <h1 align="center">Health Report Analysis</h1>
 
 ### This is the solution for confluentia'25, PS-5
+
+<img width="1566" height="1018" alt="image" src="https://github.com/user-attachments/assets/7fe4f35a-4df1-4e90-9c26-5a4a75f27be9" />
+
 ### check out here: [medicalreportanalysis.vercel.app](https://medicalreportanalysis.vercel.app)
 
 ## Features

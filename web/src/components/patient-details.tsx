@@ -36,6 +36,8 @@ const PatientForm = ({ patientData, onDataChange }: PatientFormProps) => {
                             onChange={(e) => handleInputChange("age", e.target.value)}
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors"
                             placeholder="Enter age"
+                            max={120}
+                            min={0}
                         />
                     </div>
 
@@ -60,6 +62,8 @@ const PatientForm = ({ patientData, onDataChange }: PatientFormProps) => {
                         onChange={(e) => handleInputChange("weight", e.target.value)}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors"
                         placeholder="Enter weight in kg"
+                        max={500}
+                        min={0}
                     />
                 </div>
 

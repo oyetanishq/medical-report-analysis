@@ -102,7 +102,7 @@ const Index = () => {
                     </div>
 
                     <div className="space-y-6">
-                        <ReportDisplay content={reportContent} isProcessing={isProcessing} onAnalyze={handleAnalysis} canAnalyze={!!reportContent && !!patientData.age} isAnalyzing={isAnalyzing} />
+                        <ReportDisplay content={reportContent} isProcessing={isProcessing} onAnalyze={handleAnalysis} canAnalyze={!!reportContent && !!patientData.age && !!patientData.gender && !!patientData.symptoms && !!patientData.weight} isAnalyzing={isAnalyzing} />
                         {analysisResult1 && <AnalysisSection analysis={analysisResult1} />}
                         {analysisResult2 && <AnalysisSection analysis={analysisResult2} />}
 

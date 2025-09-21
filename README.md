@@ -33,6 +33,9 @@
 - frontend is deployed to vercel (takes <60ms once cached).
 - backend is deployed on aws (warm containers takes <4 sec (pdf convert), and almost 12 sec for report analysis).
 
+## Working Flow
+![this is the working flow of the whole website with backend](./web/public/flow-diagram.png)
+
 ## Team Members
 - Aeshna
 - Vaishnavi

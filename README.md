@@ -5,6 +5,7 @@
 <img width="1566" height="1018" alt="image" src="https://github.com/user-attachments/assets/7fe4f35a-4df1-4e90-9c26-5a4a75f27be9" />
 
 ### check out here: [medicalreportanalysis.vercel.app](https://medicalreportanalysis.vercel.app)
+### canva presentation link: [ppt-link](https://www.canva.com/design/DAGzlE9Iubw/6IprxPSgX8-z6D9giKgTNA/view?utm_content=DAGzlE9Iubw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb02e05eddb)
 
 ## Features
 - upload your medical report (either text or scanned copy)

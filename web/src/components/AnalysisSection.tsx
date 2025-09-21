@@ -37,12 +37,6 @@ const AnalysisSection = ({ analysis }: AnalysisSectionProps) => {
                         </ReactMarkdown>
                     </div>
                 </div>
-
-                <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-                    <p className="text-sm text-amber-800">
-                        ⚠️ <strong>Important:</strong> This AI analysis is for informational purposes only and should not replace professional medical advice. Always consult with a qualified healthcare provider for medical decisions.
-                    </p>
-                </div>
             </div>
         </div>
     );

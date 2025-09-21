@@ -75,12 +75,6 @@ const PatientForm = ({ patientData, onDataChange }: PatientFormProps) => {
                     />
                 </div>
             </div>
-
-            <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-                <p className="text-sm text-amber-800">
-                    💡 <strong>Tip:</strong> Providing accurate patient information helps generate more personalized analysis results.
-                </p>
-            </div>
         </div>
     );
 };

@@ -3,7 +3,6 @@ import FileUpload from "@/components/FileUpload";
 import PatientForm from "@/components/PatientForm";
 import ReportDisplay from "@/components/ReportDisplay";
 import AnalysisSection from "@/components/AnalysisSection";
-import { getBioMakersDetails, patientSummarise } from "@/utils/prompts";
 
 export interface PatientData {
     age: string;
@@ -11,33 +10,6 @@ export interface PatientData {
     weight: string;
     symptoms: string;
 }
-
-const askGemini = async (prompt: string) => {
-    const response = await fetch(import.meta.env.VITE_GEMINI_KEY, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            contents: [
-                {
-                    parts: [
-                        {
-                            text: prompt,
-                        },
-                    ],
-                },
-            ],
-        }),
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to get analysis from Gemini API");
-    }
-
-    const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Unable to generate analysis";
-};
 
 const Index = () => {
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -87,8 +59,24 @@ const Index = () => {
         setIsAnalyzing(true);
 
         try {
-            setAnalysisResult1(await askGemini(patientSummarise(reportContent, patientData)));
-            setAnalysisResult2(await askGemini(getBioMakersDetails(reportContent, patientData)));
+            const response = await fetch(import.meta.env.VITE_MEDICAL_REPORT_ANALYSIS, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    report_content: reportContent,
+                    patient_details: patientData,
+                }),
+            });
+            if (!response.ok) {
+                throw new Error("Failed to convert PDF");
+            }
+
+            const { patient_summary, patient_biomakers_trends } = await response.json();
+
+            setAnalysisResult1(patient_summary);
+            setAnalysisResult2(patient_biomakers_trends);
         } catch (error) {
             console.error("Error analyzing report:", error);
             alert("there was some error processing your request");

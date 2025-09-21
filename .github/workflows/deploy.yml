@@ -1,9 +1,12 @@
 name: Deploy Lambdas
 
 on:
-  push:
-    branches:
-      - main  # run on push to main branch
+    workflow_dispatch:
+        inputs:
+            tags:
+                description: 'Tag (e.g. v1.0.0)'
+                required: true
+                type: string
 
 jobs:
   deploy-lambdas:
@@ -19,3 +22,28 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Deploy medical-report-analysis
+        run: |
+          cd lambda/medical-report-analysis
+
+          pip install requests -t medical-report-analysis/
+          cp lambda_function.py medical-report-analysis/
+
+          cd medical-report-analysis
+          zip -r ../medical-report-analysis.zip .
+
+          cd ..
+
+          aws lambda update-function-code \
+            --function-name medical-report-analysis \
+            --zip-file fileb://medical-report-analysis.zip
+          aws lambda publish-version --function-name medical-report-analysis
+
+      - name: Deploy process-pdf-with-textract
+        run: |
+          cd lambda/process-pdf-with-textract
+          zip -r process-pdf-with-textract.zip .
+          aws lambda update-function-code \
+            --function-name process-pdf-with-textract \
+            --zip-file fileb://process-pdf-with-textract.zip
+          aws lambda publish-version --function-name process-pdf-with-textract

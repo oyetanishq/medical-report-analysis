@@ -29,6 +29,8 @@ jobs:
           cd medical-report-analysis
           zip -r ../medical-report-analysis.zip .
 
+          cd ..
+
           aws lambda update-function-code \
             --function-name medical-report-analysis \
             --zip-file fileb://medical-report-analysis.zip

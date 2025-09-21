@@ -1,8 +1,9 @@
 import { useState } from "react";
-import FileUpload from "@/components/FileUpload";
-import PatientForm from "@/components/PatientForm";
-import ReportDisplay from "@/components/ReportDisplay";
-import AnalysisSection from "@/components/AnalysisSection";
+import FileUpload from "@/components/file-upload";
+import PatientForm from "@/components/patient-details";
+import ReportDisplay from "@/components/report-display";
+import AnalysisSection from "@/components/analysis-section";
+import Chatbot from "@/components/chatbot";
 
 export interface PatientData {
     age: string;
@@ -95,17 +96,17 @@ const Index = () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto">
-                    {/* Left Column - Input Section */}
                     <div className="space-y-6">
                         <FileUpload onFileUpload={handleFileUpload} isProcessing={isProcessing} uploadedFile={uploadedFile} />
                         <PatientForm patientData={patientData} onDataChange={setPatientData} />
                     </div>
 
-                    {/* Right Column - Results Section */}
                     <div className="space-y-6">
                         <ReportDisplay content={reportContent} isProcessing={isProcessing} onAnalyze={handleAnalysis} canAnalyze={!!reportContent && !!patientData.age} isAnalyzing={isAnalyzing} />
                         {analysisResult1 && <AnalysisSection analysis={analysisResult1} />}
                         {analysisResult2 && <AnalysisSection analysis={analysisResult2} />}
+
+                        {analysisResult1 && <Chatbot patient_report_summary={analysisResult1} />}
                     </div>
                 </div>
             </div>

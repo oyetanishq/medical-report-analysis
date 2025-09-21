@@ -33,6 +33,7 @@
 ## Deployments
 - frontend is deployed to vercel (takes <60ms once cached).
 - backend is deployed on aws (warm containers takes <4 sec (pdf convert), and almost 12 sec for report analysis).
+- custom github workflow is defined to push both lambdas to production envirnoment.
 
 ## Working Flow
 ![this is the working flow of the whole website with backend](./web/public/flow-diagram.png)

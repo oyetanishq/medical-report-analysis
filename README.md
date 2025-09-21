@@ -28,6 +28,7 @@
 ## How much AI is used to make this?
 - for **frontend** only components ui is designed by chatgpt, gemini.
 - for **backend** only aws textract pdf output to markdown logic was written by gemini.
+- for **working flow diagram (below)** eraser.io ai is used.
 
 ## Deployments
 - frontend is deployed to vercel (takes <60ms once cached).
